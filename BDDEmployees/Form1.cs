@@ -36,8 +36,6 @@ namespace BDDEmployees
             listView1.Columns.Add("fkmanager_id", 50, HorizontalAlignment.Center);
             listView1.Columns.Add("fkdepartment_id", 50, HorizontalAlignment.Center);
 
-            c1.AbrirConexion();
-
             List<Employee> emps = DalEmp.SelectEmpleados(c1);
 
             for (int i = 0; i < emps.Count(); i++)
@@ -49,7 +47,7 @@ namespace BDDEmployees
                 fila.SubItems.Add(emps[i].Email.ToString());
                 if(emps[i].Phone_number == null)
                 {
-                    emps[i].Phone_number = "null";
+                    emps[i].Phone_number = "";
                 }
                 fila.SubItems.Add(emps[i].Phone_number.ToString());
                 fila.SubItems.Add(emps[i].Hire_date.ToString());
@@ -62,7 +60,6 @@ namespace BDDEmployees
                 listView1.Items.Add(fila);
             }
 
-            c1.CerrarConexion();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -75,12 +72,13 @@ namespace BDDEmployees
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+            // listView1.SelectedItems
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
         }
-
     }
 }

@@ -18,6 +18,8 @@ namespace BDDEmployees
 
             try
             {
+                c1.AbrirConexion();
+
                 string sql = "SELECT * FROM employees";
                 SqlCommand cmd = new SqlCommand(sql, c1.Conexion);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -44,6 +46,10 @@ namespace BDDEmployees
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                c1.CerrarConexion();
             }
 
             return emps;
